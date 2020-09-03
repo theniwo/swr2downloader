@@ -1,0 +1,15 @@
+docker run -d \
+	--name SWR2Downloader \
+	--hostname SWR2Downloader \
+	--restart unless-stopped \
+	--memory "256M" \
+	--cpu-quota "50000" \
+	-e TZ=Europe/Berlin \
+	-p 2223:22 \
+	-v swr2downloader_data:/user \
+	-v swr2downloader_logs:/var/log \
+	-v $HOME/Downloads:/home/user/Downloads \
+	-v /nfs/MyCloud/:/nfs/MyCloud:shared \
+	theniwo/swr2downloader:latest
+	#theniwo/swr2downloader:1.1
+
